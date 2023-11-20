@@ -6,6 +6,8 @@ function SignUp() {
 
     const navigate = useNavigate();
 
+    const [errorMsg, setErrorMsg] = useState("");
+
     const [credentials, setCredentials] = useState({
         name: "",
         email: "",
@@ -33,10 +35,14 @@ function SignUp() {
                 body: JSON.stringify({ name: credentials.name, email: credentials.email, password: credentials.password, rePassword: credentials.rePassword })
             });
             const json = await response.json();
+            if(json.user) {
+                navigate("/login");
+            }
+            else {
+                setErrorMsg(json.errors[0].msg);
+            }
 
-            console.log(json);
-
-            navigate("/login");
+            
         } catch (error) {
             console.log("Credentials:", credentials);
             console.error("Error:", error);
@@ -59,6 +65,9 @@ function SignUp() {
                 <input className="form-control inp" placeholder='Enter your Password' type='password' onChange={handleInputChange} name="password" value={credentials.password}></input>
                 <h6>Re-Password</h6>
                 <input className="form-control inp" placeholder='Re-enter your password' type='password' onChange={handleInputChange} name="rePassword" value={credentials.rePassword}></input>
+                <div className="text-danger">
+                    {errorMsg}
+                </div>
                 <button onClick={handleSubmit} className='btn btn-success button'>Sign Up</button>
             </div>
             <div className='text-light text-start col-sm right ms-5 pt-2 me-5'>

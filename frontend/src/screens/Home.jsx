@@ -1,9 +1,12 @@
 import React from 'react';
+import HeroSection from '../components/HeroSection';
 import "../styles/index.scss";
 
 function Home() {
   return (
-    <div>Home</div>
+    <div className='container main'>
+      <HeroSection />
+    </div>
   )
 }
 

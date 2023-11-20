@@ -1,7 +1,6 @@
 import User from "../models/User.js";
 import { hash, compare } from "bcrypt";
 import { generateToken } from "../utils/token-generator.js";
-import { COOKIE_NAME } from "../utils/constants.js";
 
 export const getAllUsers = async (req, res, next) => {
     try {
@@ -17,11 +16,11 @@ export const userSignUp = async (req, res, next) => {
     try {
         const { name, email, password, rePassword } = req.body;
         if (password !== rePassword) {
-            return res.status(400).send("Passwords do not match");
+            return res.status(401).json({errors: [{msg: "Passwords do not match"}]});
         }
         const existingUser = await User.findOne({ email: email });
         if (existingUser) {
-            return res.status(400).send("User already registered");
+            return res.status(401).json({errors: [{msg: "User already registered"}]});
         }
         const hashedPassword = await hash(password, 10);
         const user = new User({
@@ -43,11 +42,11 @@ export const userLogin = async (req, res, next) => {
         const { email, password } = req.body;
         const user = await User.findOne({ email: email });
         if (!user) {
-            return res.status(400).send("User is not registered");
+            return res.status(401).json({errors: [{msg: "User not registered"}]});
         }
         const isPasswordCorrect = await compare(password, user.password);
         if (!isPasswordCorrect) {
-            return res.status(400).send("Incorrect password");
+            return res.status(401).json({errors: [{msg: "Incorrect password"}]});
         }
 
         const token = generateToken(user._id.toString(), user.email, "7d");
