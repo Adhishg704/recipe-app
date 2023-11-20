@@ -1,8 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
+import Sidebar from './Sidebar';
+import { faHome, faList, faCog } from "@fortawesome/free-solid-svg-icons";
 
 function Navbar() {
+
+    const [showSidebar, setShowSidebar] = useState(false);
+    const links = [
+        {
+            name: "Home",
+            path: "/",
+            icon: faHome
+        },
+        {
+            name: "Recipes",
+            path: "/recipes",
+            icon: faList
+        },
+        {
+            name: "Settings",
+            path: "/settings",
+            icon: faCog
+        },
+    ];
+
+    function closeSidebar() {
+        setShowSidebar(false);
+    }
 
     const [cookies, setCookies] = useCookies(["access_token"]);
     const navigate = useNavigate();
@@ -14,43 +39,38 @@ function Navbar() {
     }
 
     return (
-        <div className="custom-navbar">
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-                <p className="navbar-brand text-white fs-1 me-3"><em>Hangry</em></p>
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarNav">
-                    <ul className="navbar-nav me-auto">
-                        <li className="nav-item">
-                            <Link to="/" className='nav-link text-white fs-3' style={{ textDecoration: "none" }}>Home</Link>
-                        </li>
-                    </ul>
-                    <ul className="navbar-nav ml-auto">
-                        {
-                            !(cookies.access_token) ?
-                                (
-                                    <div className='d-flex'>
-                                        <li className="nav-item">
-                                            <Link to="/login" className='nav-link text-white fs-3' style={{ textDecoration: "none" }}>Login</Link>
-                                        </li>
-                                        <li className="nav-item">
-                                            <Link to="/signup" className='nav-link text-white fs-3' style={{ textDecoration: "none" }}>Sign up</Link>
-                                        </li>
-                                    </div>
-                                )
-                                :
-                                <div className='d-flex'>
-                                    <li className="nav-item" onClick={logout}>
-                                        <p className='nav-link text-white fs-3' onClick={logout} style = {{cursor: "pointer"}}>Logout</p>
-                                    </li>
-                                </div>
-                        }
-
-                    </ul>
+        <>
+            <div className='navbar container'>
+                <a href="#!" className='logo'>Culinary<span>Com</span>pass</a>
+                <div className='nav-links'>
+                    {
+                        links.map(link => {
+                            return (
+                                <Link to={link.path} key={link.name}>{link.name}</Link>
+                            );
+                        })
+                    }
+                    {!cookies.access_token ? (
+                        <>
+                            <Link to="/login">Login</Link>
+                            <Link to="/signup">Signup</Link>
+                        </>
+                    ) : (
+                        <>
+                            <Link to="/login" onClick={logout}>Logout</Link>
+                        </>
+                    )}
                 </div>
-            </nav>
-        </div>
+                <div onClick={() => setShowSidebar(true)} className={showSidebar ? "sidebar-btn active" : "sidebar-btn"}>
+                    <div className='bar'></div>
+                    <div className='bar'></div>
+                    <div className='bar'></div>
+                </div>
+            </div>
+            {
+                showSidebar && <Sidebar close={closeSidebar} links={links} cookies = {cookies} logout = {logout} />
+            }
+        </>
     )
 }
 
