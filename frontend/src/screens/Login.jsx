@@ -52,7 +52,7 @@ function Login(){
                 </div>
                 <div>
                     <p><b>Dont have an account ? Sign Up</b></p>
-                    <button className='btn btn-warning mb-3 inp' ><Link to = "/" style = {{textDecoration: "none"}}>Sign Up</Link></button>
+                    <button className='btn btn-warning mb-3 inp' ><Link to = "/signup" style = {{textDecoration: "none"}}>Sign Up</Link></button>
                 </div>
             </div>
         </div>
