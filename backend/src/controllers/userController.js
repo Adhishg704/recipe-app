@@ -50,26 +50,9 @@ export const userLogin = async (req, res, next) => {
             return res.status(400).send("Incorrect password");
         }
 
-        res.clearCookie(COOKIE_NAME, {
-            path: "/",
-            domain: "localhost",
-            httpOnly: true,
-            signed: true
-        });
-
         const token = generateToken(user._id.toString(), user.email, "7d");
-        const expires = new Date();
-        expires.setDate(expires.getDate() + 7);
 
-        res.cookie(COOKIE_NAME, token, {
-            path: "/",
-            domain: "localhost",
-            expires,
-            httpOnly: true,
-            signed: true
-        });
-
-        return res.status(200).json({ message: "OK", user: user._id.toString() });
+        return res.status(200).json({ message: "OK", user: user._id.toString(), token: token});
     } catch (error) {
         console.log(error);
         return res.status(400).json({ message: "ERROR", cause: error.message });

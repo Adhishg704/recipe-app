@@ -15,9 +15,8 @@ app.use(cors({
     origin: ["http://localhost:3000"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type"],
+    credentials: true
 }));
-
-app.use(cookieParser(process.env.COOKIE_SECRET));
 
 app.use("/recipe-app/api/v1/", appRouter);
 
