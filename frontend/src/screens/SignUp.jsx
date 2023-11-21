@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/SignUp.css";
 
 function SignUp() {
@@ -35,14 +35,14 @@ function SignUp() {
                 body: JSON.stringify({ name: credentials.name, email: credentials.email, password: credentials.password, rePassword: credentials.rePassword })
             });
             const json = await response.json();
-            if(json.user) {
+            if (json.user) {
                 navigate("/login");
             }
             else {
                 setErrorMsg(json.errors[0].msg);
             }
 
-            
+
         } catch (error) {
             console.log("Credentials:", credentials);
             console.error("Error:", error);
@@ -54,28 +54,27 @@ function SignUp() {
     }
 
     return (
-        <div className="full min-vw-100 d-flex row w-100">
-            <div className="text-light left text-start w-50 ms-5 col-sm">
-                <h1 className='mb-3 pt-3'>Sign Up</h1>
-                <h6>Username</h6>
-                <input className="form-control inp" placeholder='Enter your username' onChange={handleInputChange} type='text' required name="name" value={credentials.name}></input>
-                <h6>Email Address</h6>
-                <input className="form-control inp" placeholder='Enter your email address' onChange={handleInputChange} type='email' name="email" value={credentials.email}></input>
+        <div className='text-start outerDiv bg-dark min-vh-100 w-100 pe-5'>
+            <div className=" ms-2 text-light inner-div" >
+                <h1 className='mb-3'>Sign up</h1>
+                <h6 >Username</h6>
+                <input placeholder='Please enter your username' name="name" className='form-control mb-2 mt-2 w-100' onChange={handleInputChange} value={credentials.name} ></input>
+                <h6 >Email</h6>
+                <input placeholder='Please enter your email' name="email" className='form-control mb-2 mt-2 w-100 ' onChange={handleInputChange} value={credentials.email} ></input>
                 <h6>Password</h6>
-                <input className="form-control inp" placeholder='Enter your Password' type='password' onChange={handleInputChange} name="password" value={credentials.password}></input>
-                <h6>Re-Password</h6>
-                <input className="form-control inp" placeholder='Re-enter your password' type='password' onChange={handleInputChange} name="rePassword" value={credentials.rePassword}></input>
-                <div className="text-danger">
+                <input type='password' placeholder='Please enter your password' name="password" className='form-control mb-2 mt-2 w-100' onChange={handleInputChange} value={credentials.password} ></input>
+                <h6>Re-enter password</h6>
+                <input type='password' placeholder='Please enter your password' name="rePassword" className='form-control w-100' onChange={handleInputChange} value={credentials.rePassword} ></input>
+                <div className='text-danger mt-3'>
                     {errorMsg}
                 </div>
-                <button onClick={handleSubmit} className='btn btn-success button'>Sign Up</button>
-            </div>
-            <div className='text-light text-start col-sm right ms-5 pt-2 me-5'>
-                <h1 className='text-warning text-center'>Recipe Finder</h1>
-                <h2>
-                    <i>"Culinary Exploration Awaits: Embark on a Gastronomic Journey with Our Recipe Finder – Sign Up Today for a World of Flavor!"</i></h2>
-                <h3>Tailored to your taste preferences, our algorithm delivers handpicked recipes, ensuring a delightful and personalized cooking experience.</h3>
-                <h3>Join a vibrant community of food enthusiasts, share your culinary creations, and engage in discussions with fellow members to elevate your cooking skills together.</h3>
+                <div>
+                    <button onClick={handleSubmit} className='btn btn-block w-100 btn-success mt-4 mb-2' style = {{width: "500px"}} >Sign up</button>
+                </div>
+                <div>
+                    <p><b>Already have an account ? Login</b></p>
+                    <Link className='text-white' to="/login" style={{ textDecoration: "none" }}><button className='btn btn-block w-100 btn-warning mb-3' >Login</button></Link>
+                </div>
             </div>
         </div>
     )

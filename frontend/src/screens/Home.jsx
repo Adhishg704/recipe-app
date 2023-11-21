@@ -1,13 +1,16 @@
-import React from 'react';
-import HeroSection from '../components/HeroSection';
-import "../styles/index.scss";
+import HeroSection from "../components/HeroSection";
+import ImproveSkills from "../components/ImproveSkills";
+import QouteSection from "../components/QuoteSection";
+import ChiefsSection from "../components/ChiefsSection";
 
-function Home() {
-  return (
-    <div className='container main'>
-      <HeroSection />
-    </div>
-  )
+
+export default function Home(){
+    return (
+        <div>
+            <HeroSection />
+            <ImproveSkills />
+            <QouteSection />
+            <ChiefsSection />
+        </div>
+    )
 }
-
-export default Home;

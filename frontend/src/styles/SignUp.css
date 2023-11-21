@@ -1,15 +1,12 @@
-.inp{
-    width: 80%;
-    margin-top: 10px;
-    margin-bottom: 10px;
+.inner-div{
+    padding-top: 80px;
+    padding-left: 80px;
 }
-.button{
-    width: 80%;
-    margin-top: 10px;
-    margin-bottom: 135px;
-}
-.full{
-    background-image: url('newImg1.jpg');
-    height: 625px;
-    vertical-align: center;
-}
+
+.outerDiv {
+    border-radius:10px;
+};
+
+.inp {
+    width:350px;
+};

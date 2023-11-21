@@ -46,22 +46,22 @@ function Login() {
     }
 
     return (
-        <div className='text-start outerDiv bg-dark min-vh-100 w-100'>
+        <div className='text-start outerDiv bg-dark min-vh-100 w-100 pe-5'>
             <div className=" ms-2 text-light inner-div" >
                 <h1 className='mb-3'>Login</h1>
                 <h6 >Email</h6>
-                <input placeholder='Please enter your email' name="email" className='form-control mb-2 mt-2 inp' onChange={handleInputChange} value={credentials.email} ></input>
+                <input placeholder='Please enter your email' name="email" className='form-control mb-2 mt-2 w-100' onChange={handleInputChange} value={credentials.email} ></input>
                 <h6>Password</h6>
-                <input type='password' placeholder='Please enter your password' name="password" className='form-control inp' onChange={handleInputChange} value={credentials.password} ></input>
-                <div className='text-danger'>
+                <input type='password' placeholder='Please enter your password' name="password" className='form-control w-100' onChange={handleInputChange} value={credentials.password}></input>
+                <div className='text-danger mt-3'>
                     {errorMsg}
                 </div>
                 <div>
-                    <button onClick={handleSubmit} className='btn btn-success mt-4 mb-2 inp' >Login</button>
+                    <button onClick={handleSubmit} className='btn btn-block btn-success mt-4 mb-2 w-100' style = {{width: "500px"}}>Login</button>
                 </div>
                 <div>
                     <p><b>Dont have an account ? Sign Up</b></p>
-                    <Link className='text-white' to="/signup" style={{ textDecoration: "none" }}><button className='btn btn-warning mb-3 inp' >Sign Up</button></Link>
+                    <Link className='text-white' to="/signup" style={{ textDecoration: "none" }}><button className='btn btn-block btn-warning mb-3 w-100' >Sign Up</button></Link>
                 </div>
             </div>
         </div>
