@@ -1,4 +1,5 @@
 import Home from './screens/Home';
+import About from './screens/About';
 import Recipes from './screens/Recipes';
 import Settings from './screens/Settings';
 import SignUp from './screens/SignUp';
@@ -18,6 +19,7 @@ function App() {
       <div className='container main'>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
           <Route path="/recipes" element={<Recipes />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/signup" element={<SignUp />} />

@@ -124,7 +124,7 @@
         font-size: 1.1em;
         transform: translateX(-100%);
         animation: getAnimationDuration(.3s) slideInLeft forwards;
-        @for $i from 1 through 5 {
+        @for $i from 1 through 7 {
             &:nth-child(#{$i}) {
                 animation-delay: #{$i * .1}s;
             }
