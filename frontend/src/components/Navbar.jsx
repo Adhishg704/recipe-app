@@ -58,6 +58,7 @@ function Navbar() {
                     ) : (
                         <>
                             <Link to="/search">Search</Link>
+                            <Link to="/profile">Profile</Link>
                             <Link to="/login" onClick={logout}>Logout</Link>
                         </>
                     )}

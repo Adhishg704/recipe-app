@@ -5,6 +5,7 @@ import Settings from './screens/Settings';
 import SignUp from './screens/SignUp';
 import Login from './screens/Login';
 import ForgotPassword from './screens/ForgotPassword';
+import Profile from './screens/Profile';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import {
@@ -26,6 +27,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
           <Route path="/forgotPassword" element={<ForgotPassword />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </div>
       <Footer />

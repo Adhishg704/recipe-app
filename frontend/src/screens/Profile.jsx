@@ -20,7 +20,7 @@ function Profile() {
     }
 
     const handleInputChange = (event) => {
-        setUsername(event.target.value);
+        setnewUsername(event.target.value);
     }
 
     useEffect(() => {
@@ -35,6 +35,7 @@ function Profile() {
             <div className=" ms-2 text-light inner-div" >
                 <h1 className='mb-3'>Profile</h1>
                 <h6 className='mb-3'>Your username:   {username}</h6>
+                <h6 className='mb-3'>Your email:   {email}</h6>
                 <h6 >Change username</h6>
                 <input placeholder='Please enter your new username' name="name" className='form-control mb-2 mt-2 w-100' onChange={handleInputChange} value={newUsername} ></input>
                 <div>
