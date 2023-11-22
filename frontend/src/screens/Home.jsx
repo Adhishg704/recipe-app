@@ -76,7 +76,7 @@ function Home() {
         <div className="recipes-container">
             {
                 username? (
-                    <h1 className='title d-block'>Welcome back, {username}</h1>
+                    <h1 className='fs-3'>Welcome back, {username}</h1>
                 ):
                 ""
             }
