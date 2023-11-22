@@ -131,7 +131,7 @@ function Search() {
             <div className="search-container">
                 <div className="meal-wrapper">
                     <div className="meal-search">
-                        <h2 className="title">Find Meals For Your Ingredients</h2>
+                        <h2 className="title">Find Meals For Your Ingredients and Cuisines</h2>
                         <div className="meal-search-box">
                             <input type="text" className="search-control" placeholder="Enter an ingredient/cuisine" id="search-input" />
                             <button type="submit" className="search-btn btn" id="search-btn">
