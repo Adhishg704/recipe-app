@@ -35,6 +35,9 @@ function ForgotPassword() {
         if(json.newPassword) {
             navigate("/login");
         }
+        else if(json.errors) {
+            setErrorMsg(json.errors[0].msg);
+        }
     }
 
     return (
