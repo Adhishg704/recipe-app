@@ -1,4 +1,3 @@
-import PreviousSearches from "../components/PreviousSearches";
 import React, { useEffect } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faTimes } from "@fortawesome/free-solid-svg-icons";
@@ -129,13 +128,12 @@ function Search() {
 
     return (
         <>
-            <PreviousSearches />
             <div className="search-container">
                 <div className="meal-wrapper">
                     <div className="meal-search">
                         <h2 className="title">Find Meals For Your Ingredients</h2>
                         <div className="meal-search-box">
-                            <input type="text" className="search-control" placeholder="Enter an ingredient" id="search-input" />
+                            <input type="text" className="search-control" placeholder="Enter an ingredient/cuisine" id="search-input" />
                             <button type="submit" className="search-btn btn" id="search-btn">
                                 <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon>
                             </button>
