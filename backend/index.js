@@ -1,5 +1,4 @@
 import express from "express";
-import cookieParser from "cookie-parser";
 import cors from "cors";
 import { connectToDatabase } from "./src/db/connection.js";
 import { config } from "dotenv";
@@ -22,7 +21,7 @@ app.use("/recipe-app/api/v1/", appRouter);
 
 connectToDatabase()
     .then(() => {
-        app.listen(PORT, () => {
+        app.listen(5000, () => {
             console.log(`Server is listening on port ${PORT} and is connected to database`);
         });
     }).catch((error) => {
