@@ -59,8 +59,8 @@ function Home() {
         });
 
         const json = await response.json();
-        if(json.userName) {
-            setUsername(json.userName.name);
+        if(json.user) {
+            setUsername(json.user.name);
         }
     }
 
@@ -70,7 +70,7 @@ function Home() {
         if(userID) {
             getUsername(userID);
         }
-    })
+    });
 
     return (
         <div className="recipes-container">

@@ -61,8 +61,8 @@ export const userLogin = async (req, res, next) => {
 export const getUsername = async (req, res, next) => {
     try {
         const {id} = req.body;
-        const userName = await User.findById(id, 'name');
-        return res.status(200).json({userName: userName});
+        const user = await User.findById(id);
+        return res.status(200).json({user: user});
     } catch (error) {
         console.log(error);
         return res.status(400).json({ message: "ERROR", cause: error.message });
@@ -104,7 +104,7 @@ export const updateUsername = async (req, res, next) => {
             {new: true}
         );
         if(!updatedUser) {
-            return res.status(500).json({message: "Error updating username"});
+            return res.status(500).json({message: "Error updating username", id: id, newUsername: newUsername});
         }
         return res.status(200).json({message: "OK", newUsername: updatedUser.name});
     } catch (error) {
