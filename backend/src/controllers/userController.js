@@ -98,8 +98,8 @@ export const updatePassword = async (req, res, next) => {
 export const updateUsername = async (req, res, next) => {
     try {
         const {id, newUsername} = req.body;
-        const updatedUser = await User.findOneAndUpdate(
-            {id: id},
+        const updatedUser = await User.findByIdAndUpdate(
+            {_id: id},
             {$set: {name: newUsername}},
             {new: true}
         );
