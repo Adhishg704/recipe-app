@@ -61,7 +61,7 @@ function Login() {
                 </div>
                 <div>
                     <p><b>Dont have an account ? Sign Up</b></p>
-                    <Link className='text-white' to="/forgotPassword" style={{ textDecoration: "none" }}><button className='btn btn-block btn-warning mb-3 w-100' >Forgot Password?</button></Link>
+                    Forgot password
                     <Link className='text-white' to="/signup" style={{ textDecoration: "none" }}><button className='btn btn-block btn-warning mb-3 w-100' >Sign Up</button></Link>
                 </div>
             </div>
