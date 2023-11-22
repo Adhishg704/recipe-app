@@ -57,11 +57,11 @@ function Login() {
                     {errorMsg}
                 </div>
                 <div>
-                    <button onClick={handleSubmit} className='btn btn-block btn-success mt-4 mb-2 w-100' style = {{width: "500px"}}>Login</button>
+                    <button onClick={handleSubmit} className='btn btn-block btn-success mt-4 mb-2 w-100' style={{ width: "500px" }}>Login</button>
                 </div>
                 <div>
                     <p><b>Dont have an account ? Sign Up</b></p>
-                    <p><b><Link className='text-white' to="/forgotPassword" style={{ textDecoration: "none" }} />Forgot password?</b></p>
+                    <p><b><Link className='text-white' to="/forgotPassword" style={{ textDecoration: "none" }}>Forgot password?</Link></b></p>
                     <Link className='text-white' to="/signup" style={{ textDecoration: "none" }}><button className='btn btn-block btn-warning mb-3 w-100' >Sign Up</button></Link>
                 </div>
             </div>
