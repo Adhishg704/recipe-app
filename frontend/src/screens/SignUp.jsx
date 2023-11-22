@@ -27,7 +27,7 @@ function SignUp() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch("https://recipe-app-api-six.vercel.app/user/signup/", {
+            const response = await fetch("https://recipe-app-api-six.vercel.app/recipe-app/api/v1/user/signup/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
