@@ -11,7 +11,7 @@ const PORT = process.env.PORT;
 app.use(express.json());
 
 app.use(cors({
-    origin: ["http://localhost:3000", "https://recipe-app-ten-rho.vercel.app/"],
+    origin: ["https://recipe-app-frontend-six.vercel.app"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type"],
     credentials: true
