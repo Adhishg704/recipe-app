@@ -40,7 +40,7 @@ function ForgotPassword() {
     return (
         <div className='text-start outerDiv bg-dark min-vh-100 w-100 pe-5'>
             <div className=" ms-2 text-light inner-div" >
-                <h1 className='mb-3'>Login</h1>
+                <h1 className='mb-3'>Change password</h1>
                 <h6 >Email</h6>
                 <input placeholder='Please enter your email' name="email" className='form-control mb-2 mt-2 w-100' onChange={handleInputChange} value={credentials.email} ></input>
                 <h6>New Password</h6>
