@@ -82,12 +82,31 @@ export const updatePassword = async (req, res, next) => {
         const hashedPassword = await bcryptjs.hash(password, 10);
         const updatedUser = await User.findOneAndUpdate(
             {email: email},
-            {$set: {password: hashedPassword}}
+            {$set: {password: hashedPassword}},
+            {new: true}
         );
         if(!updatedUser) {
             return res.status(500).json({message: "Error updating password"});
         }
         return res.status(200).json({message: "OK", newPassword: updatedUser.password});
+    } catch (error) {
+        console.log(error);
+        return res.status(400).json({message: "ERROR", cause: error.message});
+    }
+}
+
+export const updateUsername = async (req, res, next) => {
+    try {
+        const {id, newUsername} = req.body;
+        const updatedUser = await User.findOneAndUpdate(
+            {id: id},
+            {$set: {name: hashedPassword}},
+            {new: true}
+        );
+        if(!updatedUser) {
+            return res.status(500).json({message: "Error updating username"});
+        }
+        return res.status(200).json({message: "OK", newUsername: updatedUser.name});
     } catch (error) {
         console.log(error);
         return res.status(400).json({message: "ERROR", cause: error.message});
