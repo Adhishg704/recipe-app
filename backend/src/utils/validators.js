@@ -26,3 +26,8 @@ export const signupValidator = [
     body("name").notEmpty().withMessage("Name is required"),
     body("rePassword").trim().isLength({min: 6}).withMessage("Password should have minimum 6 characters")
 ];
+
+export const changePasswordValidator = [
+    ...loginValidator,
+    body("rePassword").trim().isLength({min: 6}).withMessage("Password should have minimum 6 characters")
+];

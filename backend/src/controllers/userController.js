@@ -68,3 +68,28 @@ export const getUsername = async (req, res, next) => {
         return res.status(400).json({ message: "ERROR", cause: error.message });
     }
 }
+
+export const updatePassword = async (req, res, next) => {
+    try {
+        const {email, password, rePassword} = req.body;
+        const existingUser = await User.findOne({email: email});
+        if(!existingUser) {
+            return res.status(401).json({errors: [{msg: "User not registered"}]});
+        }
+        if(password !== rePassword) {
+            return res.status(401).json({errors: [{msg: "Passwords do not match"}]});
+        }
+        const hashedPassword = await bcryptjs.hash(password, 10);
+        const updatedUser = await User.findOneAndUpdate(
+            {email: email},
+            {$set: {password: hashedPassword}}
+        );
+        if(!updatedUser) {
+            return res.status(500).json({message: "Error updating password"});
+        }
+        return res.status(200).json({message: "OK", newPassword: updatedUser.password});
+    } catch (error) {
+        console.log(error);
+        return res.status(400).json({message: "ERROR", cause: error.message});
+    }
+}
