@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import RecipeCard from '../components/RecipeCard';
 
 function Home() {
@@ -48,8 +48,37 @@ function Home() {
         },
     ];
 
+    const [username, setUsername] = useState("");
+
+    const getUsername = async (id) => {
+        const response = await fetch("https://recipe-app-api-six.vercel.app/recipe-app/api/v1/user/getName", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ id: id}),
+            credentials: "include"
+        });
+
+        const json = await response.json();
+        if(json.userName) {
+            setUsername(json.userName);
+        }
+    }
+
+    useEffect(() => {
+        const userID = window.localStorage.getItem("userID");
+        if(userID) {
+            getUsername(userID);
+        }
+    }, [])
+
     return (
         <div className="recipes-container">
+            {
+                username? (
+                    <h1 className='title'>Welcome back, {username}</h1>
+                ):
+                ""
+            }
             {recipeData.map((recipe, index) => (
                     <RecipeCard key={index} recipe={recipe} />
             ))}

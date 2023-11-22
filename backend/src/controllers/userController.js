@@ -57,3 +57,14 @@ export const userLogin = async (req, res, next) => {
         return res.status(400).json({ message: "ERROR", cause: error.message });
     }
 }
+
+export const getUsername = async (req, res, next) => {
+    try {
+        const {id} = req.body;
+        const userName = await User.findById(id, 'name');
+        return res.status(200).json({userName: userName});
+    } catch (error) {
+        console.log(error);
+        return res.status(400).json({ message: "ERROR", cause: error.message });
+    }
+}
