@@ -100,7 +100,7 @@ export const updateUsername = async (req, res, next) => {
         const {id, newUsername} = req.body;
         const updatedUser = await User.findOneAndUpdate(
             {id: id},
-            {$set: {name: hashedPassword}},
+            {$set: {name: newUsername}},
             {new: true}
         );
         if(!updatedUser) {
