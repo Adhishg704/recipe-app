@@ -74,7 +74,7 @@ function Home() {
     return (
         <div className="recipes-container">
             {
-                username? (
+                (username !== "")? (
                     <h1 className='title'>Welcome back, {username}</h1>
                 ):
                 ""
