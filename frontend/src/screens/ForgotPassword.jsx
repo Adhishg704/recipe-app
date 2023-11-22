@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/Login.css';
 import { useState } from "react";
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function ForgotPassword() {
 
@@ -23,9 +23,18 @@ function ForgotPassword() {
         });
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        useNavigate("/login");
+        const response = await fetch("https://recipe-app-api-six.vercel.app/recipe-app/api/v1/user/updatePassword/", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email: credentials.email, password: credentials.password, rePassword: credentials.rePassword }),
+            credentials: "include"
+        });
+        const json = await response.json();
+        if(json.newPassword) {
+            useNavigate("/login");
+        }
     }
 
     return (

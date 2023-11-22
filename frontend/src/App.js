@@ -4,6 +4,7 @@ import Search from './screens/Search';
 import Settings from './screens/Settings';
 import SignUp from './screens/SignUp';
 import Login from './screens/Login';
+import ForgotPassword from './screens/ForgotPassword';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import {
@@ -24,6 +25,7 @@ function App() {
           <Route path="/settings" element={<Settings />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/forgotPassword" element={<ForgotPassword />} />
         </Routes>
       </div>
       <Footer />
