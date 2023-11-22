@@ -60,7 +60,7 @@ function Home() {
 
         const json = await response.json();
         if(json.userName) {
-            setUsername(json.userName);
+            setUsername(json.userName.name);
         }
     }
 
