@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSignIn, faSignOut, faUserPlus } from "@fortawesome/free-solid-svg-icons"
+import { faSignIn, faSignOut, faUserPlus, faSearch } from "@fortawesome/free-solid-svg-icons"
 
 function Sidebar(props) {
     return (
@@ -21,6 +21,7 @@ function Sidebar(props) {
                 </>
             ) : (
                 <>
+                    <Link className = "sidebar-link" to="/search"><FontAwesomeIcon icon={faSearch} />Search</Link>
                     <Link className='sidebar-link' to="/login" onClick={props.logout}><FontAwesomeIcon icon={faSignOut} />Logout</Link>
                 </>
             )}

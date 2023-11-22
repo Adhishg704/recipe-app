@@ -19,11 +19,6 @@ function Navbar() {
             icon: faInfo
         },
         {
-            name: "Search",
-            path: "/search",
-            icon: faSearch
-        },
-        {
             name: "Settings",
             path: "/settings",
             icon: faCog
@@ -62,6 +57,7 @@ function Navbar() {
                         </>
                     ) : (
                         <>
+                            <Link to="/search">Search</Link>
                             <Link to="/login" onClick={logout}>Logout</Link>
                         </>
                     )}
