@@ -33,7 +33,7 @@ function ForgotPassword() {
         });
         const json = await response.json();
         if(json.newPassword) {
-            useNavigate("/login");
+            navigate("/login");
         }
     }
 
