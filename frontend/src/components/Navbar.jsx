@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import Sidebar from './Sidebar';
-import { faHome, faList, faCog, faInfo } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faSearch, faCog, faInfo } from "@fortawesome/free-solid-svg-icons";
 
 function Navbar() {
 
@@ -19,9 +19,9 @@ function Navbar() {
             icon: faInfo
         },
         {
-            name: "Recipes",
-            path: "/recipes",
-            icon: faList
+            name: "Search",
+            path: "/search",
+            icon: faSearch
         },
         {
             name: "Settings",

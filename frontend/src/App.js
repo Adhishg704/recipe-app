@@ -1,6 +1,6 @@
 import Home from './screens/Home';
 import About from './screens/About';
-import Recipes from './screens/Recipes';
+import Search from './screens/Search';
 import Settings from './screens/Settings';
 import SignUp from './screens/SignUp';
 import Login from './screens/Login';
@@ -20,7 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/recipes" element={<Recipes />} />
+          <Route path="/search" element={<Search/>} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />

@@ -21,7 +21,7 @@ export default function HeroSection() {
                 <p className="info">
                     Culinary Compass is your passport to a world of diverse and delectable cuisines. Embark on a culinary adventure, exploring recipes that will tantalize your taste buds from various corners of the globe. Our service is provided to you at no cost. So, start your journey of flavor discovery now.
                 </p>
-                <button className="btn"><Link to = "/recipes" className= "text-white">explore now</Link></button>
+                <button className="btn"><Link to = "/search" className= "text-white">explore now</Link></button>
             </div>
             <div className="col gallery">
                 {images.map((src, index) => (
