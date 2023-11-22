@@ -2,7 +2,7 @@ import { connect, disconnect } from "mongoose";
 
 async function connectToDatabase() {
     try {
-        await connect("mongodb+srv://adhishg704:y7BRXvjDe4tStdou@cluster0.hsvwzux.mongodb.net/RecipeAppMERN?");
+        await connect(process.env.MONGODB_URL);
     } catch (error) {
         console.log(error);
         throw new Error("Could not connect to database");

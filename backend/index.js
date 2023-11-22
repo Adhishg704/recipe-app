@@ -21,7 +21,7 @@ app.use("/recipe-app/api/v1/", appRouter);
 
 connectToDatabase()
     .then(() => {
-        app.listen(5000, () => {
+        app.listen(process.env.PORT, () => {
             console.log(`Server is listening on port ${PORT} and is connected to database`);
         });
     }).catch((error) => {
