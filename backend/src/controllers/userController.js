@@ -1,5 +1,5 @@
 import User from "../models/User.js";
-import { hash, compare } from "bcrypt";
+import bcryptjs from "bcryptjs";
 import { generateToken } from "../utils/token-generator.js";
 
 export const getAllUsers = async (req, res, next) => {
@@ -22,7 +22,7 @@ export const userSignUp = async (req, res, next) => {
         if (existingUser) {
             return res.status(401).json({errors: [{msg: "User already registered"}]});
         }
-        const hashedPassword = await hash(password, 10);
+        const hashedPassword = await bcryptjs.hash(password, 10);
         const user = new User({
             name: name,
             email: email,
@@ -44,7 +44,7 @@ export const userLogin = async (req, res, next) => {
         if (!user) {
             return res.status(401).json({errors: [{msg: "User not registered"}]});
         }
-        const isPasswordCorrect = await compare(password, user.password);
+        const isPasswordCorrect = await bcryptjs.compare(password, user.password);
         if (!isPasswordCorrect) {
             return res.status(401).json({errors: [{msg: "Incorrect password"}]});
         }
