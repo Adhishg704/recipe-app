@@ -1,6 +1,9 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import {useNavigate} from "react-router-dom";
 
 function Profile() {
+
+    const navigate = useNavigate();
 
     const [username, setUsername] = useState("")
     const [newUsername, setnewUsername] = useState("");
@@ -21,6 +24,23 @@ function Profile() {
 
     const handleInputChange = (event) => {
         setnewUsername(event.target.value);
+    }
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const userID = window.localStorage.getItem("userID");
+        const response = await fetch("https://recipe-app-api-six.vercel.app/recipe-app/api/v1/user/updateUsername/", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ id: userID, newUsername: newUsername }),
+            credentials: "include"
+        });
+
+        const json = await response.json();
+        console.log(json);
+        if (json.newUsername) {
+            navigate("/");      
+        }
     }
 
     useEffect(() => {
