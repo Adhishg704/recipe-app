@@ -7,6 +7,7 @@ function Profile() {
 
     const [username, setUsername] = useState("")
     const [newUsername, setnewUsername] = useState("");
+    const [email, setEmail] = useState("");
 
     const getUsername = async (id) => {
         const response = await fetch("https://recipe-app-api-six.vercel.app/recipe-app/api/v1/user/getName/", {
@@ -19,6 +20,7 @@ function Profile() {
         const json = await response.json();
         if (json.user) {
             setUsername(json.user.name);
+            setEmail(json.user.email);
         }
     }
 
